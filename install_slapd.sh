@@ -1,4 +1,5 @@
 #!/bin/bash
 
 echo "Hello~"
-sudo debconf-get-selections | grep slapd
+$p = sudo debconf-get-selections | grep slapd
+echo $p
