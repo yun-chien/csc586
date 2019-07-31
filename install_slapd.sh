@@ -22,7 +22,7 @@ sudo apt install -y slapd ladp-utils
 
 sudo ufw allow ldap
 
-PASS="$(slappasswd -s rammy)"
+PASS=$(slappasswd -s rammy)
 cat<<EOF >/local/repository/users.ldif
 dn: uid=student,ou=People,dc=clemson,dc=cloudlab,dc=us
 objectClass: inetOrgPerson
@@ -35,12 +35,12 @@ cn: student
 displayName: student
 uidNumber: 10000
 gidNumber: 5000
-userPassword: $PASS
+userPassword: "$PASS"
 gecos: Golden Ram
 loginShell: /bin/dash
 homeDirectory: /home/student
 EOF
 
-ldapadd -x -D cn=admin,dc=clemson,dc=cloudlab,dc=us -w *** -f basedn.ldif
+ldapadd -x -D cn=admin,dc=clemson,dc=cloudlab,dc=us -w admin -f basedn.ldif
 
-ldapadd -x -D cn=admin,dc=clemson,dc=cloudlab,dc=us -w *** -f users.ldif
+ldapadd -x -D cn=admin,dc=clemson,dc=cloudlab,dc=us -w admin -f users.ldif
