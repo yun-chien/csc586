@@ -21,10 +21,6 @@ sudo apt install -y libnss-ldap libpam-ldap ldap-utils
 sudo chmod 777 /etc/nsswitch.conf
 cat<<EOF >/etc/nsswitch.conf
 # /etc/nsswitch.conf
-#
-# Example configuration of GNU Name Service Switch functionality.
-# If you have the `glibc-doc-reference' and `info' packages installed, try:
-# `info libc "Name Service Switch"' for information about this file.
 
 passwd:         compat systemd   ldap                                                                                                   
 group:          compat systemd   ldap                                                                                               
@@ -55,9 +51,6 @@ cat<<EOF >/etc/pam.d/common-password
 #
 # The "sha512" option enables salted SHA512 passwords.  Without this option,
 # the default is Unix crypt.  Prior releases used the option "md5".
-#
-# The "obscure" option replaces the old `OBSCURE_CHECKS_ENAB' option in
-# login.defs.
 #
 # See the pam_unix manpage for other options.
                                                                                                                                     
